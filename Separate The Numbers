@@ -1,0 +1,80 @@
+public static String func(String s, String a) {
+        // If not want to worry about string length then make use of BigInteger class.
+
+        //  BigInteger bg = new BigInteger(a); 
+        //  BigInteger bg1 = new BigInteger("1"); 
+        //  BigInteger sum = new BigInteger("0"); 
+        // while(a.length()<s.length()) {
+        //     sum =  bg.add(bg1); 
+        //     String l = sum.toString(10);
+        //     bg = sum;  
+        //     a = a + l ; 
+            
+        // }
+        
+        // Else this question can be easily solved using long also since string length cannot be greater than 32 so individual numbers cannot be greater than 16. Thus actual loop in those cases has to be till 16 digit numbers only.
+
+        long y = Long.parseLong(a); 
+
+        while(a.length()<s.length()) {
+            y++; 
+            String l = Long.toString(y); 
+            a+=l; 
+        }
+
+        return a ; 
+    }
+
+    // Complete the separateNumbers function below.
+    static void separateNumbers(String s) {
+        int n = s.length(); 
+        String res = "" ; 
+        int i=0 ;
+        if(n<=16) {
+        for(i=0; i<n; i++) {
+            String a = ""; 
+            for(int j=0; j<=i; j++) {
+                    a+=s.charAt(j) ; 
+            }
+            String alpha = func(s, a); 
+            if(alpha.equals(s) && !alpha.equals(a)) {
+                System.out.println("YES" + " " +a); 
+                break ;  
+            }
+
+            else {
+                continue; 
+            }
+        }
+
+        if(i==n) {
+            System.out.println("NO"); 
+        }
+
+        }
+
+        else {
+            for(i=0; i<16; i++) {
+            String a = ""; 
+            for(int j=0; j<=i; j++) {
+                    a+=s.charAt(j) ; 
+            }
+            String alpha = func(s, a); 
+            if(alpha.equals(s) && !alpha.equals(a)) {
+                System.out.println("YES" + " " +a); 
+                break ;  
+            }
+
+            else {
+                continue; 
+            }
+        }
+
+        if(i==16) {
+            System.out.println("NO"); 
+        }
+        }
+
+        
+
+    }
